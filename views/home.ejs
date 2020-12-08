@@ -1,0 +1,68 @@
+<%- contentFor('body') %>
+
+<div class="container">
+
+  <p class="lead text-muted">pesquisar imovel</p>
+                <form action="/pesquisar-i" method="POST">
+                      <div class="form-group">
+                            <input type="text" name="tipo" class="form-control" placeholder="tipo">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="ndormitorios" class="form-control" placeholder="numero de dormitorios">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="nbanheiros" class="form-control" placeholder="numero de banheiros">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="ngaragem" class="form-control" placeholder="numero de vagas na garagem">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="endereco" class="form-control" placeholder="endereco">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="descricao" class="form-control" placeholder="descricao">
+                      </div>
+                      <div class="form-group">
+                            <input type="text" name="valor" class="form-control" required placeholder="valor maximo">
+                      </div>
+                      <div class="form-group">
+                            <input type="hidden" name="situacao" class="form-control" value="disponivel">
+                      </div>
+                      <div class="form-group text-right">
+                            <button type="submit" id="pesquisar" class="btn btn-primary btn-lg">pesquisar</button>
+                      </div>
+                </form>
+
+
+  <p class="lead text-muted">imoveis em destaque</p>
+  
+ <div class="row">
+  <% for (imovel of imoveis){%>
+          <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <img class="img-responsive bd-placeholder-img card-img-top" style="height: 250px" src="/uploads/<%= imovel.imagem0 %>">
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">$<%= imovel.valor %> <small class="text-muted">/ mes</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>tipo: <%= imovel.tipo %></li>
+          <li>numero de dormitorios: <%= imovel.ndormitorios %></li>
+          <li>numero de banheiros: <%= imovel.nbanheiros %></li>
+          <li>numero de vagas na garagem: <%= imovel.ngaragem %></li>
+          <li>endereco: <%= imovel.endereco %></li>
+          <li>descricao: <%= imovel.descricao %></li>
+        </ul>
+		  <form action="/informar-i-i" method="POST">
+			<input type="hidden" name="ninscricao" value="<%= imovel.ninscricao %>">
+			        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">tenho interesse</button>
+		  </form>
+      </div>
+    </div>
+    </div>
+    <% } %>
+ </div>
+
+</div>
+
+</div>

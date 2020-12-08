@@ -1,0 +1,11 @@
+
+    <div class="container">
+
+      <figure class="image" style="width: 256px">
+        <img style="width: 256px" src="<%= image %>">
+      </figure>
+
+      <p>URL: <a href="<%= image %>" target="_blank"><%= image %></a></p>
+      <p>File size: <%= new Intl.NumberFormat().format(size / 1024) %> KB</p>
+
+    </div>
